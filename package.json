@@ -8,6 +8,7 @@
     "export": "slidev export"
   },
   "dependencies": {
+    "@posva/slidev-theme": "^0.1.0",
     "@slidev/cli": "^51.3.0",
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",
