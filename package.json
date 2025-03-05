@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "build": "slidev build",
-    "dev": "slidev --open",
+    "dev": "slidev",
     "export": "slidev export"
   },
   "dependencies": {
+    "@iconify-json/logos": "^1.2.4",
     "@posva/slidev-theme": "^0.2.0",
     "@slidev/cli": "^51.3.0",
     "vue": "^3.5.13"
