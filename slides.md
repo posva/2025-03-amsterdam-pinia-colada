@@ -57,6 +57,17 @@ Except for one, Data Fetching.
 layout: cover
 ---
 
+<h1>
+<ruby  class="text-6xl font-sans">
+  風<rp>(</rp><rt class="mb-2 text-2xl">fēng</rt><rp>)</rp>水<rp>(</rp><rt class="mb-2 text-2xl">shuǐ</rt><rp>)</rp>
+</ruby>
+</h1>
+
+
+---
+layout: cover
+---
+
 # Pinia Colada
 
 ## A Cocktail of
@@ -70,6 +81,7 @@ TODO: logo on the side or something to make it look better
 -->
 
 ---
+
 
 ````md magic-move
 ```vue{*|4|5-7|12}
@@ -106,11 +118,15 @@ recipeList.value = await fetchRecipeList();
 ````
 
 <p v-click.hide="4">Simple Client side only</p>
-<p v-click="4" v-click.hide="6">Suspense</p>
+
+<p v-click="+4" v-click.hide="6">Suspense</p>
 
 <!--
 
-Classic SPA fetching, only on client. User clicks on recipee, comes back, reloads again (most of the time cached by the server).
+Classic SPA fetching, only on client. User clicks on recipe, comes back, reloads again (most of the time cached by the server).
+and so they think, I don't need a client side cache. But that's not what a client side cache is for.
+
+client cache is for control over a centralized data. We can manually invalidate, refetch
 
 -->
 
@@ -220,6 +236,33 @@ A different public. Useful in different ways
 
 ---
 
+Know your audience
+
+<!-- 
+Loading times are not the same if your application is ran in an internal network, always on desktops with a good internet connection than if it's ran on mobile devices on the subway.
+-->
+
+---
+
+Introducing a slight delay before showing a loading spinner can prevent brief, unnecessary flashes that might draw attention to minor delays.
+
+400ms
+
+<!-- 
+https://uxpickle.com/how-long-will-the-busy-spinner-keep-your-user-waiting/?utm_source=chatgpt.com 
+-->
+
+---
+
+2018 Google study about bounce rate
+
+<!-- 
+https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/
+-->
+
+
+---
+
 - Know your audience
 - Get creative
 
@@ -227,3 +270,8 @@ A different public. Useful in different ways
 No silver bullet
 Why do it? Because a perception slower wait times, creates a better experience.
 -->
+
+---
+
+Modern apps: lots of streams of data with AI
+Probably not for Pinia Colada
