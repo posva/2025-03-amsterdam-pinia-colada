@@ -671,7 +671,7 @@ layout: center
 
 ## Mutations
 
-```vue{18-22}{maxHeight:'410px'}
+```vue{*|18-22}{maxHeight:'410px'}
 <script setup lang="ts">
 import { useMutation, useQueryCache } from '@pinia/colada'
 import { patchContact } from '@/api/contacts'
@@ -940,7 +940,8 @@ layout: center
 ![pinia-colada](./public/pinia-colada.png){.h-64.mx-auto}
 
 <!--
-No silver bullet
+- No silver bullet
+- perception of speed goes beyond pinia: page transitions for long requests
 -->
 
 ---
@@ -952,21 +953,6 @@ layout: end
 ---
 
 
-STOP
-STOOOOOOOOP
-
----
-layout: cover
----
-
-# Great User Experience
-
-<!--
-Initial feedback about if it was easy to use. Then start asking more questions and they will start commenting on the looks of the application very quickly.
-- feedback varies between users
-- they all have different feedback on visuals
-- ux can be subjective
--->
 
 ---
 layout: quote
@@ -1038,28 +1024,3 @@ A different public. Useful in different ways
 - A moment of rest for the parents, or time to check where to have lunch
 - Place it nearby the food court, allows people to wait until free spot
 -->
-
----
-
-Introducing a slight delay before showing a loading spinner can prevent brief, unnecessary flashes that might draw attention to minor delays.
-
-400ms
-
-<!-- 
-https://uxpickle.com/how-long-will-the-busy-spinner-keep-your-user-waiting/?utm_source=chatgpt.com 
--->
-
----
-
-- Know your audience
-- Get creative
-
-<!--
-No silver bullet
-Why do it? Because a perception slower wait times, creates a better experience.
--->
-
----
-
-Modern apps: lots of streams of data with AI
-Probably not for Pinia Colada
