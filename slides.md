@@ -747,6 +747,7 @@ layout: center
 <!--
 - in a way, we try to predict
 - the surgeon has people around that know the process and can provide the tools before they are needed
+- Optimistic updates: when mutating server state, we can update the client state before the server responds
 -->
 
 ---
@@ -763,6 +764,96 @@ layout: center
 layout: center
 ---
 
+```ts {*|2-12|14|16|17-31|33|35,38|39-47|50-53|55-75|59-62}{maxHeight:'410px'}
+const { mutate: addTodo } = useMutation({
+  mutation: (title: string) => {
+    if (!title.trim()) throw new Error('Title is required')
+
+    return $fetch('/api/todos', {
+      method: 'POST',
+      body: {
+        title,
+        completed: 0,
+      },
+    })
+  },
+
+  onMutate(title) {
+    // let the user enter new todos right away!
+    newTodo.value = ''
+    const oldTodos = queryCache.getQueryData<Todo[]>(['todos']) || []
+    const newTodoItem = {
+      title,
+      completed: 0,
+      // a negative id to differentiate them from the server ones
+      id: -Date.now(),
+      createdAt: new Date(),
+      userId: user.value!.id
+    } satisfies Todo
+    // we use newTodos to check for the cache consistency
+    const newTodos = [
+      ...oldTodos,
+      newTodoItem
+    ]
+    queryCache.setQueryData(['todos'], newTodos)
+
+    queryCache.cancelQueries({ key: ['todos'], exact: true })
+
+    return { oldTodos, newTodos, newTodoItem }
+  },
+
+  onSuccess(todo, _, { newTodoItem }) {
+    // update the todo with the information from the server
+    // since we are invalidating queries, this allows us to progressively
+    // update the todo list even if the user is adding a lot very quickly
+    const todoList = queryCache.getQueryData<Todo[]>(['todos']) || []
+    const todoIndex = todoList.findIndex(t => t.id === newTodoItem.id)
+    if (todoIndex >= 0) {
+      queryCache.setQueryData(['todos'], todoList.toSpliced(todoIndex, 1, todo))
+    }
+    toast.add({ title: `Todo "${todo.title}" created.` })
+  },
+
+  onSettled() {
+    // always refetch the todos after a mutation
+    queryCache.invalidateQueries({ key: ['todos'] })
+  },
+
+  onError(err, _title, { oldTodos, newTodos }) {
+    // oldTodos can be undefined if onMutate errors
+    // we also want to check if the oldTodos are still in the cache
+    // because the cache could have been updated by another query
+    if (newTodos != null && newTodos === queryCache.getQueryData(['todos'])) {
+      queryCache.setQueryData(['todos'], oldTodos)
+    }
+
+    if (isNuxtZodError(err)) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const title = (err as any).data.data.issues
+        .map((issue: { message: string }) => issue.message)
+        .join('\n')
+      toast.add({ title, color: 'red' })
+    }
+    else {
+      console.error(err)
+      toast.add({ title: 'Unexpected Error', color: 'red' })
+    }
+  }
+})
+```
+
+<!-- 
+- that was a lot of code! Can we make it less?
+- yes, with conventions in a project
+- I wouldn't recommend it too much because it's great to have a code that can be read and adapted
+- not blocking
+- but you can do it with plugins
+-->
+
+---
+layout: center
+---
+
 # Query Cache
 
 Powerful plugin API based on `$onAction()`
@@ -772,7 +863,7 @@ It's often forgotten that Pinia is not just a global state + devtools. The plugi
 Actions acts as events that you can interact with. Fetching, invalidating, cancelling, they all trigger different actions
 -->
 
-```ts {*|3}{maxHeight:'410px'}
+```ts {*|3|4|7-9|13|45-54}{maxHeight:'410px'}
 export function PiniaColadaDelay(options?: PiniaColadaDelayOptions): PiniaColadaPlugin {
   return ({ queryCache, scope }) => {
     queryCache.$onAction(({ name, after }) => {
@@ -823,14 +914,11 @@ interface PiniaColadaDelayOptions {
 
 declare module '@pinia/colada' {
   interface UseQueryOptions<TResult, TError> extends PiniaColadaDelayOptions {}
-
   interface UseQueryEntryExtensions<TResult, TError> {
-     */
     isDelaying: ShallowRef<boolean>
   }
 }
 ```
-
 
 ---
 layout: center
@@ -840,9 +928,20 @@ layout: center
 
 - Avoid showing loading state too quickly
 - Use centralized data to consistently show the same state
-- 
+- Invalidate queries as soon as you know the data has changed
+- Use optimistic updates to make the app feel faster
+
+<v-clicks>
+
+  - Get creative! 👨‍💻
+
+</v-clicks>
 
 ![pinia-colada](./public/pinia-colada.png){.h-64.mx-auto}
+
+<!--
+No silver bullet
+-->
 
 ---
 layout: end
