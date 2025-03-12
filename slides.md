@@ -68,7 +68,10 @@ layout: cover
 ## for Better UX
 
 <!--
-- My approach to async state management, which includes but is not limited to data fetching
+- refreshing approach to async state management
+- how to use it to improve your UX
+- before I wanna talk history of UX
+- a few years back
 -->
 
 ---
@@ -90,8 +93,13 @@ layout: cover
 _4000 BC Ancient China_
 
 <!--
-- Feng shui: 4000 BC Ancient China, "The best space is one in which the arrangement of objects is aligned with the space's flow of energy". In practice, organize the space to make it harmonious and functional. Make the space feel good to be in.
--
+- did I say a few years, sorry meant a few thousands
+- 4000 bc, no interfaces, no digital
+- UX couldn't exist, but idea did
+- Ergonomics
+- Feng shui: 4000 BC Ancient China, "The best space is one in which the arrangement of objects is aligned with the space's flow of energy"
+- organize the space to make it harmonious and functional. Make the space feel good to be in.
+- ergonomic about the space
 -->
 
 ---
@@ -100,10 +108,16 @@ layout: quote
 
 ### "\[Tools\] must be positioned in such a way as to not obstruct the surgeon, and also be within easy reach when required. They must be close to the surgeon’s operating hand."
 
-_Hippocrates - Greece 500 B.C_
+_Hippocrates - Greece 500 BC_
 
-<!-- 
-500 BC Ancient Greece: evidence that ergonomics played a major role in the way tools and workspaces were designed. Hippocrates, the Father of Medicine, describing a Surgeon's workplace: "[Tools] must be positioned in such a way as to not obstruct the surgeon, and also be within easy reach when required. They must be close to the surgeon’s operating hand." user-centric workplaces design.
+<!--
+- huh · po · kruh · teez, father of medicine
+- played major role in the way tools and workspaces designed
+- describing surgeon's workplace
+-  "Tools must be positioned in such a way as to not obstruct the surgeon, and also be within easy reach when required. They must be close to the surgeon’s operating hand."
+- From space harmonity
+- user-centric approach
+- Space optimized for a surgeon
 -->
 
 ---
@@ -115,12 +129,14 @@ layout: quote
 _Henry Dreyfuss - 1955_
 
 <!--
-Henry Dreyfuss, industrial designer
-
+- Henry Dreyfuss, industrial designer, 1955
+- If the point of contact between the product and people becomes a point of friction, then the designer has failed. If, on the other hand, people are made safer, more comfortable, more desirous of purchase, more efficient—or just plain happier—by contact with the product, then the designer has succeeded
 - Much closer to UI than feng shui and hippocrates
-- but still how does this apply to web
-
-There is a lot more about UX history, and it's a very interesting topic, I encourage you to read more about it by just searching "History of UX" on Google
+- 1st time we talk about failure
+- before: as if one shot to get it right
+- adapt? iterating?
+- much closer to UI
+- flow / friction
 -->
 
 ---
@@ -132,9 +148,10 @@ layout: quote
 _Don Norman (1993)_
 
 <!--
+- History goes on, but stop in 1993
 - UX was coined by Don Norman in the 90s
-- too recent of a term
-- but this concept of measuring how a system performs in terms of experience comes from way back, before a digital era
+- There is a lot more about UX history, and it's a very interesting topic, I encourage you to read more about it by just searching "History of UX" on Google
+- Go back to friction point and apply to a browser
 -->
 
 ---
@@ -144,12 +161,11 @@ image: '/chrome-blank.png'
 ---
 
 <!--
-- concept of friction and how it relates to browser
-- vision of creating a good space from the beginning vs iterating on its flaws (industrial design)
-- UX more like iterating
 - Past: too idealistic. The reality is not flow
-- A browser's main point of contact is the URL bar
-  - The first thing you do, even before you see the website, is to wait for the page to load
+- 1955 idea of friction
+- A browser's main point of contact is full of friction
+- the URL bar
+- The first thing you do, even before you see the website, is to wait for the page to load
 - Let's take a static website with no javascript
 -->
 
@@ -176,8 +192,17 @@ onSlideEnter(() => {
 </script>
 
 <!--
+- as we load, we need to wait for things to appear
 - By Henry Dreyfuss' definition, the browser's design has already failed
-- what about using it?
+- notice how did you feel when the website loaded?
+- who knew this website? website for a movie called spaced jam from 1996, 1 year after initial release of JS, 1y before the creation of the JS standard
+- was it a positive feeling? raise
+- for who was it negative?
+- we haven't used the website, we already create an idea of it.
+- studies show we form idea the first 50ms we see an interface. before the js loads for every application
+- cognitive bias: halo effect. the way the space flows, still affects us (风水)
+- So no, the browser design hasn't failed us because the friction here is not avoidable
+- in fact, using the website becomes even worse
 -->
 
 ---
@@ -203,13 +228,17 @@ onSlideEnter(() => {
 </script>
 
 <!--
-- Nowadays nobody builds an app like this. In fact, I wouldn't even call it an app, just a website.
-- Most interactions in web are async because we communicate with a server
-- Caricaturing but all wait times have a negative impact on UX and therefore on the perception of the app.
-- I don't need to show you an application video because we all use them every day
-- All this async state, data fetching, is a part of applications that con potentially create friction but can also be used to reduce it
-- this is the good scenario: static is just assets, we just have to wait a bit for the content
-- webapps async also contains errors
+- all interactions make the user wait
+- Nowadays nobody builds an app like this. In fact, just a website.
+- async because we communicate with a server
+- no need to show a video, you likely used app in the past few days
+- likely had a frustration experience
+- loading that hangs
+- things that load but then show blank content
+- that small stress of is it going work? I clicked back, did I break the form? Will I have to start my order all over again?
+- That's the par that interests me
+- Aesthetics subjective, hire a good designer
+- managing loading state, errors, consistent way to make your app feel better
 -->
 
 ---
@@ -237,14 +266,8 @@ onMounted(async () => {
 ```
 
 <!--
-
-- data fetching can be easy but only for simple stuff
-- no error management
-- no loading state
-- No refresh
-
-client cache is for control over a centralized data. We can manually invalidate, refetch
-
+- but worse than static because no loading
+- you might be thinking you can use suspense and stick a skeleton ui
 -->
 
 ---
@@ -252,11 +275,9 @@ layout: image
 image: '/distracted-boyfriend-suspense.jpg'
 ---
 
-<!-- 
-Placeholders can be used to show a loading state while the data is being fetched. This can be useful to avoid layout shifts and to keep the user engaged. Personally I prefer to have the placeholder as close as possible to the actual data. Sometimes even inside the component and allow a prop to show it. 
-Use a placeholder? <https://zalog.ro/placeholder-loading/>
+<!--
+Placeholders can be used to show a loading state while the data is being fetched. This can be useful to avoid layout shifts and to keep the user engaged.
 -->
-
 
 ---
 layout: image
@@ -265,16 +286,46 @@ image: '/skeleton-ui.png'
 ---
 
 <!--
-Placeholders can be used to show a loading state while the data is being fetched. This can be useful to avoid layout shifts and to keep the user engaged. Personally I prefer to have the placeholder as close as possible to the actual data. Sometimes even inside the component and allow a prop to show it. 
-Use a placeholder? <https://zalog.ro/placeholder-loading/>
-
-The more we use this, the more the users get frustrated with it and the more they will associate frustration with seeing skeletons like these.
+- so widely used, that some app used it wrong
+- yet so similar for the brain
+- if the placeholder stays up a bit too long: is the app broken?
 -->
 
 ---
 layout: image
 image: '/frustrated-computer.jpg'
 ---
+
+<!--
+- there is nothing worse in UX that when we feel less efficient
+- includes unexpected errors
+- not feeling in control
+- no feedback loop
+- handle errors properly
+- but unexpected errors always create frustration, but it's better to show something than nothing at all
+- our goal is to reduce the wait time
+-->
+
+---
+layout: center
+---
+
+# Reduce the wait time
+
+<v-clicks>
+
+- Make our async operations faster
+- Start them sooner
+- Make them _feel_ faster
+
+</v-clicks>
+
+<!--
+- to keep in flow
+- that's the gist of it
+- I'm going to show you some tricks
+- focus today on these points with pinia colada
+-->
 
 ---
 layout: center
@@ -290,75 +341,20 @@ A layer on top of <logos-pinia></logos-pinia>!
 - Light but extensible API
 
 <!--
-- I like a global and shared access to data -> the query cache
-- Precise level of configuration 
-- I like light libraries
-- I like simplicity over too many abstractions
-  - I find it really hard to come back to a project you developed a few years ago but you can't understand anymore where an import came from.
+- what is it? Vue plugin, layer on top of pinia
+- main parts of it
+- query cache, simple client side cache, pinia store, centralize
+- Queries are the async operations that read data. List of products, search result, some user's profile
+- Mutations opposite, async operations that write data to server
+- It's similar to GET/POST, but in practice a search can be a post
+- light: ~3kb, lean an extensible API to adapt to your needs. important
 -->
-
----
-layout: image
-image: '/baggage-claim.jpg'
----
-
-<!-- 
-the perception of speed is more important than speed itself
--->
-
----
-layout: image
-backgroundSize: contain
-image: '/sims-2-loading.webp'
----
-
-
-<!--
-- Entertain the user reading
--->
-
----
-layout: image
-image: '/interactive-floor-projection.jpg'
----
-
-<!--
-A different public. Useful in different ways
-- A moment of rest for the parents, or time to check where to have lunch
-- Place it nearby the food court, allows people to wait until free spot
--->
-
----
-
-Introducing a slight delay before showing a loading spinner can prevent brief, unnecessary flashes that might draw attention to minor delays.
-
-400ms
-
-<!-- 
-https://uxpickle.com/how-long-will-the-busy-spinner-keep-your-user-waiting/?utm_source=chatgpt.com 
--->
-
----
-
-- Know your audience
-- Get creative
-
-<!--
-No silver bullet
-Why do it? Because a perception slower wait times, creates a better experience.
--->
-
----
-
-Modern apps: lots of streams of data with AI
-Probably not for Pinia Colada
 
 ---
 layout: center
 ---
 
-
-```vue {5-11|16|18-20|21-25|27-27}{maxHeight:'410px'}
+```vue {5-11|9|10|6-7|16|18-20|21-25|27-27}{maxHeight:'410px'}
 <script setup lang="ts">
 import { useQuery } from '@pinia/colada'
 import ProductItem from '@/components/ProductItem.vue'
@@ -391,13 +387,12 @@ const {
 ```
 
 <!--
+- queries first and most important part
+- [click]key how stored in cache
 - The query can be reused in many places and the data is consistent 
-- Atomic access to states:
-  - status: for the data, which can
-  - asyncStatus reflects any loading state
-  - Maps well to what we need in the interface
-- Discriminated union TS but not even forced to use it
-- Notice the order: errors
+- [click] query fn
+- [click] get among other things, state, asyncStatus
+- asyncStatus reflects any loading state: interesting = automatically refetches
 -->
 
 ---
@@ -420,10 +415,14 @@ Three different possible `state`s
 | `'success'` | _defined_ | `null` |
 | `'error'` | `undefined` or _defined_ | _defined_ |
 
+<!--
+- works well with discriminated unions in TS
+- not forced to use
+-->
 
 ---
 
-```ts{*|5,11-13|7,8}
+```ts{*|5,11-13|7,8|16}
 import { useQuery } from '@pinia/colada'
 
 const {
@@ -448,6 +447,10 @@ const {
 - state has convenient accesses
 - ability to refresh, which doesn't fetch if the data is fresh
 - refetch
+- on the surface, seems just like loading and error
+- but what makes it so special?
+- the key links them together
+- can be called in many places, still just one source of data
 -->
 
 ---
@@ -471,31 +474,13 @@ await refresh()
 ```
 ````
 
-<!-- 
-refresh will reuse any ongoing request and will avoid doing one if the data is fresh
-in practice, use refresh instead of refetch
--->
-
----
-layout: center
----
-
-## Fresh data
-
-```ts{4}
-useQuery({
-  key: ['products'],
-  query: () => fetch('/api/products').then((res) => res.json()),
-  staleTime: 5000, // Data becomes stale after 5s
-})
-```
-
-<!-- 
-By default 5s -> back and forth, no request
-most common misconception of client side cache: not about less requests
-Opposite: have fresh data as soon as possible
-- activating the browser tab will refresh the data
-- mounting a component that calls useQuery will also refresh
+<!--
+- same with refreshes
+- refresh will reuse any ongoing request and will avoid doing one if the data is fresh
+- in practice, use refresh instead of refetch
+- inconsistent updates of data create confusion and users loose trust
+- centralized place for data = consistent state across your app
+- ex: change avatar in user and it doesn't change in the navbar
 -->
 
 ---
@@ -525,24 +510,70 @@ const {
 } = productsEntry
 ```
 
+<!--
+- by linking things though key
+- access to the cache entries
+- client cache not about replacing the server cache
+- not reducing calls but making more at the right time
+-->
+
 ---
 layout: center
 ---
 
-## Centralized data
+## The query cache
 
-```ts
-const route = useRoute()
-// gets the product with all its details
+```vue
+<script setup lang="ts">
+import { useQueryCache } from '@pinia/colada'
+
+const queryCache = useQueryCache()
+</script>
+```
+
+<!--
+- it's a client side cache
+- why if on server
+  - not about doing less requests
+  - actually about doing more requests but at the appropriate time
+-->
+
+---
+layout: center
+---
+
+## Fresh data
+
+```ts{*|4}
 useQuery({
-  key: () => ['products', route.params.productId],
-  query: () => getProductById(productId),
-})
-useQuery({
-  key: () => ['products', route.params.productId, { searchResult: true }],
-  query: () => getProductSummaryById(productId),
+  key: ['products'],
+  query: () => fetch('/api/products').then((res) => res.json()),
+  staleTime: 5000, // Data becomes stale after 5s
 })
 ```
+
+<!--
+- concept of fresh vs stale data (like in cache)
+- fresh data: is up to date
+- stale data: is not up to date and should be prefetched
+- noticed query has no argument
+- automatically triggers a refetch if the data is stale
+  - on focus
+  - mount component with useQuery
+- how is this better? tell store
+-->
+
+---
+layout: image
+image: '/baggage-claim.jpg'
+---
+
+<!--
+- tell story about baggage claim in Huston
+- the perception of speed is more important than speed itself
+  - Make the user not realize they are waiting
+- how applies to web?
+-->
 
 ---
 layout: center
@@ -556,12 +587,15 @@ layout: center
 
 ###### [Jacob Nielsen - 1993](https://www.nngroup.com/articles/response-times-3-important-limits/)
 
-<!-- 
+<!--
 - 0.1s: is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result.
 - 1s is about the limit for the user's flow of thought to stay uninterrupted, even though the user will notice the delay. Normally, no special feedback is necessary during delays of more than 0.1 but less than 1.0 second, but the user does lose the feeling of operating directly on the data.
 - 10s is about the limit for keeping the user's attention focused on the dialogue. For longer delays, users will want to perform other tasks while waiting for the computer to finish, so they should be given feedback indicating when the computer expects to be done. Feedback during the delay is especially important if the response time is likely to be highly variable, since users will then not know what to expect.
+- my API never gonna take 10s. Until you introduce AI
 -->
 
+---
+layout: center
 ---
 
 ## Delay spinners
@@ -581,9 +615,63 @@ useQuery({
 })
 ```
 
+<!--
+- many ways of applying this
+- Plugins later
+- Plays with the perception of speed
+-->
+
+---
+layout: center
 ---
 
-```vue
+## Mutations
+
+```vue {*|9|5-7|20}{maxHeight:'410px'}
+<script setup lang="ts">
+import { useMutation } from '@pinia/colada'
+
+const {
+  mutate: createTodo,
+  status,
+  asyncStatus,
+} = useMutation({
+  mutation: (todoText: string) =>
+    fetch('/api/todos', {
+      method: 'POST',
+      body: JSON.stringify({ text: todoText }),
+    }),
+})
+
+const todoText = ref('')
+</script>
+
+<template>
+  <form @submit.prevent="createTodo(todoText)">
+    <input v-model="todoText">
+    <button :disabled="asyncStatus === 'loading'">
+      Add todo
+    </button>
+  </form>
+</template>
+```
+
+<!--
+- another way of playing with perception of speed
+- mutate fn only required
+- gives access to the state, exactly like a query
+- does not execute automatically, so it can take arguments
+- most apps have both, queries and mutations
+- key is to use them together, how?
+-->
+
+---
+layout: center
+---
+
+## Mutations
+
+```vue{18-22}{maxHeight:'410px'}
 <script setup lang="ts">
 import { useMutation, useQueryCache } from '@pinia/colada'
 import { patchContact } from '@/api/contacts'
@@ -604,7 +692,7 @@ const {
   onSettled(updatedContact, error, contact) {
     // invalidate the contact list and detail queries
     // they will be refetched automatically if they are being used
-    queryCache.invalidateQueries({ key: ['contacts-list'] })
+    queryCache.invalidateQueries({ key: ['contacts'], exact: true })
     queryCache.invalidateQueries({ key: ['contacts', contact.id] })
   },
 })
@@ -629,39 +717,62 @@ const {
 ```
 
 <!--
-Things are going to update in the background. It's consistent but we are not giving feedback to the user
-We can show a loading indicator, or a skeleton, or a placeholder, or a combination of them.
-
-- Many options:
+- while queries are more common, mutations is where there is  more risk to create friction
+- more likely errors
+- a place full of opportunities
+- know what the user is going to do next, what it's going to fetch
+- so we can tell pinia colada, these queries needs to be prefetched
+- that's what invalidates does, it cancels any ongoing queries, mark them as stale, and if they are active, fetches them
+- mutation still finishes before the queries are loaded, but we can even await the invalidations
+- if the queries used in the background, their loading state will reflect that, they will keep showing the old state while fetching
+- how to show up to you:
   - Indicate that the data is being updated: e.gp a spinner, graying out the info, disabling the form (GitHub). the app is still usable in this time
-- All places displaying the info handle the loading locally, can be a spinner, can be a grayed out version of the data.
-- 
+- I recommend not showing the loading state too prominently, it shouldn' attract user's attention
+- graying out is no to noticeable
 -->
 
+---
+layout: center
+---
+
+## Predict the future
+
+<v-clicks>
+
+- Pre fetching
+- Optimistic updates
+
+</v-clicks>
+
+<!--
+- in a way, we try to predict
+- the surgeon has people around that know the process and can provide the tools before they are needed
+-->
+
+---
+layout: center
+---
+
+# 🪄 [todos.nuxt.dev](https://todos.nuxt.dev/optimistic-todos){.font-mono}
+
+<!--
+- show how it's instant
+-->
+
+---
+layout: center
 ---
 
 # Query Cache
 
-- Pinia store that centralizes all the queries
-  - Powerful plugin API based on `$onAction()`
+Powerful plugin API based on `$onAction()`
 
 <!--
 It's often forgotten that Pinia is not just a global state + devtools. The plugin API is what makes it really powerful.
 Actions acts as events that you can interact with. Fetching, invalidating, cancelling, they all trigger different actions
 -->
 
-```ts
-import { PiniaColada } from '@pinia/colada'
-import { PiniaColadaDelay } from '@pinia/colada-plugin-delay'
-
-app.use(PiniaColada, {
-  plugins: [
-    PiniaColadaDelay(),
-  ],
-})
-```
-
-```ts {*|3}
+```ts {*|3}{maxHeight:'410px'}
 export function PiniaColadaDelay(options?: PiniaColadaDelayOptions): PiniaColadaPlugin {
   return ({ queryCache, scope }) => {
     queryCache.$onAction(({ name, after }) => {
@@ -720,28 +831,24 @@ declare module '@pinia/colada' {
 }
 ```
 
----
-
-
-Predicting the future
-
-- Pre fetching
-- Optimistic updates
-
-<!--
-the surgeon has people around that know the process and can provide the tools before they are needed
--->
 
 ---
+layout: center
+---
 
+## Pinia Colada
 
-Know your audience
+- Avoid showing loading state too quickly
+- Use centralized data to consistently show the same state
+- 
 
-<!-- 
-Spacejam example might feel good because of nostalgia but can also feel like a horrendous experience
+![pinia-colada](./public/pinia-colada.png){.h-64.mx-auto}
 
-Loading times are not the same if your application is ran in an internal network, always on desktops with a good internet connection than if it's ran on mobile devices on the subway.
--->
+---
+layout: end
+---
+
+# Thanks
 
 ---
 
@@ -790,3 +897,70 @@ _Lindgaard et al. (2006)_
 - funny: they form a perception before js is even loaded
 - UX also includes subjective features
 -->
+
+
+---
+layout: center
+---
+
+## Hierarchical data
+
+```ts
+const route = useRoute()
+// gets the product with all its details
+useQuery({
+  key: () => ['products', route.params.productId],
+  query: () => getProductById(productId),
+})
+useQuery({
+  key: () => ['products', route.params.productId, { searchResult: true }],
+  query: () => getProductSummaryById(productId),
+})
+```
+
+---
+layout: image
+backgroundSize: contain
+image: '/sims-2-loading.webp'
+---
+
+
+<!--
+- Entertain the user reading
+-->
+
+---
+layout: image
+image: '/interactive-floor-projection.jpg'
+---
+
+<!--
+A different public. Useful in different ways
+- A moment of rest for the parents, or time to check where to have lunch
+- Place it nearby the food court, allows people to wait until free spot
+-->
+
+---
+
+Introducing a slight delay before showing a loading spinner can prevent brief, unnecessary flashes that might draw attention to minor delays.
+
+400ms
+
+<!-- 
+https://uxpickle.com/how-long-will-the-busy-spinner-keep-your-user-waiting/?utm_source=chatgpt.com 
+-->
+
+---
+
+- Know your audience
+- Get creative
+
+<!--
+No silver bullet
+Why do it? Because a perception slower wait times, creates a better experience.
+-->
+
+---
+
+Modern apps: lots of streams of data with AI
+Probably not for Pinia Colada
