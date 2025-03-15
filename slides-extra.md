@@ -1,3 +1,9 @@
+
+
+
+
+
+
 ---
 layout: center
 ---
@@ -5,35 +11,32 @@ layout: center
 ## Hierarchical data
 
 ```ts
-const route = useRoute();
+const route = useRoute()
 // gets the product with all its details
 useQuery({
-  key: () => ["products", route.params.productId],
+  key: () => ['products', route.params.productId],
   query: () => getProductById(productId),
-});
+})
 useQuery({
-  key: () => ["products", route.params.productId, { searchResult: true }],
+  key: () => ['products', route.params.productId, { searchResult: true }],
   query: () => getProductSummaryById(productId),
-});
+})
 ```
 
 ---
-
 layout: image
 backgroundSize: contain
 image: '/sims-2-loading.webp'
-
 ---
+
 
 <!--
 - Entertain the user reading
 -->
 
 ---
-
 layout: image
 image: '/interactive-floor-projection.jpg'
-
 ---
 
 <!--

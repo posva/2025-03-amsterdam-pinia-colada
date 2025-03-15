@@ -54,8 +54,8 @@ Except for one, Data Fetching.
 -->
 
 ---
-
-## layout: cover
+layout: cover
+---
 
 # Pinia Colada
 
@@ -75,8 +75,8 @@ Except for one, Data Fetching.
 -->
 
 ---
-
-## layout: cover
+layout: cover
+---
 
 <h1>
 <ruby  class="text-6xl font-sans">
@@ -103,8 +103,8 @@ _4000 BC Ancient China_
 -->
 
 ---
-
-## layout: quote
+layout: quote
+---
 
 ### "\[Tools\] must be positioned in such a way as to not obstruct the surgeon, and also be within easy reach when required. They must be close to the surgeon’s operating hand."
 
@@ -121,8 +121,8 @@ _Hippocrates - Greece 500 BC_
 -->
 
 ---
-
-## layout: quote
+layout: quote
+---
 
 ### "If the point of contact between the product and people becomes a point of friction, then the designer has failed. If, on the other hand, people are made safer, more comfortable, more desirous of purchase, more efficient—or just plain happier—by contact with the product, then the designer has succeeded."
 
@@ -140,8 +140,8 @@ _Henry Dreyfuss - 1955_
 -->
 
 ---
-
-## layout: quote
+layout: quote
+---
 
 ### "I thought Human Interface and usability were too narrow: I wanted to cover all aspects of the person’s experience with a system, including industrial design, graphics, the interface, the physical interaction, and the manual"
 
@@ -155,11 +155,9 @@ _Don Norman (1993)_
 -->
 
 ---
-
 layout: image
 backgroundSize: contain
 image: '/chrome-blank.png'
-
 ---
 
 <!--
@@ -172,8 +170,8 @@ image: '/chrome-blank.png'
 -->
 
 ---
-
-## layout: full
+layout: full
+---
 
 <div class="w-full h-full">
 <video ref="video" src="./public/site-navigation.mp4" class="max-w-full max-h-full mx-auto" autoplay muted></video>
@@ -208,8 +206,8 @@ onSlideEnter(() => {
 -->
 
 ---
-
-## layout: full
+layout: full
+---
 
 <div class="w-full h-full">
 <video ref="video" src="./public/link-navigation.mp4" class="max-w-full max-h-full mx-auto" autoplay muted></video>
@@ -249,6 +247,7 @@ onSlideEnter(() => {
 
 ## Data fetching is easy 🤡
 
+
 ```vue
 <script setup lang="ts">
 import { fetchRecipeList, type Recipe } from "@/api";
@@ -272,10 +271,8 @@ onMounted(async () => {
 -->
 
 ---
-
 layout: image
 image: '/distracted-boyfriend-suspense.jpg'
-
 ---
 
 <!--
@@ -283,11 +280,9 @@ Placeholders can be used to show a loading state while the data is being fetched
 -->
 
 ---
-
 layout: image
 backgroundSize: contain
 image: '/skeleton-ui.png'
-
 ---
 
 <!--
@@ -297,10 +292,8 @@ image: '/skeleton-ui.png'
 -->
 
 ---
-
 layout: image
 image: '/frustrated-computer.jpg'
-
 ---
 
 <!--
@@ -314,8 +307,8 @@ image: '/frustrated-computer.jpg'
 -->
 
 ---
-
-## layout: center
+layout: center
+---
 
 # Reduce the wait time
 
@@ -335,8 +328,8 @@ image: '/frustrated-computer.jpg'
 -->
 
 ---
-
-## layout: center
+layout: center
+---
 
 ## Pinia Colada
 
@@ -358,18 +351,21 @@ A layer on top of <logos-pinia></logos-pinia>!
 -->
 
 ---
-
-## layout: center
+layout: center
+---
 
 ```vue {5-11|9|10|6-7|16|18-20|21-25|27-27}{maxHeight:'410px'}
 <script setup lang="ts">
-import { useQuery } from "@pinia/colada";
-import ProductItem from "@/components/ProductItem.vue";
+import { useQuery } from '@pinia/colada'
+import ProductItem from '@/components/ProductItem.vue'
 
-const { state: productList, asyncStatus } = useQuery({
-  key: ["products"],
-  query: () => fetch("/api/products").then((res) => res.json()),
-});
+const {
+  state: productList,
+  asyncStatus,
+} = useQuery({
+  key: ['products'],
+  query: () => fetch('/api/products').then((res) => res.json()),
+})
 </script>
 
 <template>
@@ -393,7 +389,7 @@ const { state: productList, asyncStatus } = useQuery({
 <!--
 - queries first and most important part
 - [click]key how stored in cache
-- The query can be reused in many places and the data is consistent
+- The query can be reused in many places and the data is consistent 
 - [click] query fn
 - [click] get among other things, state, asyncStatus
 - asyncStatus reflects any loading state: interesting = automatically refetches
@@ -402,19 +398,22 @@ const { state: productList, asyncStatus } = useQuery({
 ---
 
 ```ts
-const { state: productList, asyncStatus } = useQuery({
-  key: ["products"],
-  query: () => fetch("/api/products").then((res) => res.json()),
-});
+const {
+  state: productList,
+  asyncStatus,
+} = useQuery({
+  key: ['products'],
+  query: () => fetch('/api/products').then((res) => res.json()),
+})
 ```
 
 Three different possible `state`s
 
-| `state.status` | `state.data`             | `state.error` |
-| -------------- | ------------------------ | ------------- |
-| `'pending'`    | `undefined`              | `null`        |
-| `'success'`    | _defined_                | `null`        |
-| `'error'`      | `undefined` or _defined_ | _defined_     |
+| `state.status` | `state.data` | `state.error` |
+| ------ | ---- | ----- |
+| `'pending'` | `undefined` | `null` |
+| `'success'` | _defined_ | `null` |
+| `'error'` | `undefined` or _defined_ | _defined_ |
 
 <!--
 - works well with discriminated unions in TS
@@ -444,7 +443,7 @@ const {
 })
 ```
 
-<!--
+<!-- 
 - state has convenient accesses
 - ability to refresh, which doesn't fetch if the data is fresh
 - refetch
@@ -455,24 +454,23 @@ const {
 -->
 
 ---
-
-## layout: center
+layout: center
+---
 
 ````md magic-move
 ```ts
-refresh();
-refresh();
-refresh();
-refresh(); // just one call!
+refresh()
+refresh()
+refresh()
+refresh() // just one call!
 ```
-
 ```ts
-const p1 = refresh();
-refresh();
-refresh();
-const p2 = refresh();
-p1 === p2; // true
-await refresh();
+const p1 = refresh()
+refresh()
+refresh()
+const p2 = refresh()
+p1 === p2 // true
+await refresh()
 ```
 ````
 
@@ -486,8 +484,8 @@ await refresh();
 -->
 
 ---
-
-## layout: center
+layout: center
+---
 
 ## Centralized data
 
@@ -520,16 +518,16 @@ const {
 -->
 
 ---
-
-## layout: center
+layout: center
+---
 
 ## The query cache
 
 ```vue
 <script setup lang="ts">
-import { useQueryCache } from "@pinia/colada";
+import { useQueryCache } from '@pinia/colada'
 
-const queryCache = useQueryCache();
+const queryCache = useQueryCache()
 </script>
 ```
 
@@ -541,8 +539,8 @@ const queryCache = useQueryCache();
 -->
 
 ---
-
-## layout: center
+layout: center
+---
 
 ## Fresh data
 
@@ -566,10 +564,8 @@ useQuery({
 -->
 
 ---
-
 layout: image
 image: '/baggage-claim.jpg'
-
 ---
 
 <!--
@@ -580,8 +576,8 @@ image: '/baggage-claim.jpg'
 -->
 
 ---
-
-## layout: center
+layout: center
+---
 
 ## Response Times: The Three Important Limits
 
@@ -599,8 +595,8 @@ image: '/baggage-claim.jpg'
 -->
 
 ---
-
-## layout: center
+layout: center
+---
 
 ## Delay spinners
 
@@ -626,14 +622,14 @@ useQuery({
 -->
 
 ---
-
-## layout: center
+layout: center
+---
 
 ## Mutations
 
 ```vue {*|9|5-7|20}{maxHeight:'410px'}
 <script setup lang="ts">
-import { useMutation } from "@pinia/colada";
+import { useMutation } from '@pinia/colada'
 
 const {
   mutate: createTodo,
@@ -641,19 +637,21 @@ const {
   asyncStatus,
 } = useMutation({
   mutation: (todoText: string) =>
-    fetch("/api/todos", {
-      method: "POST",
+    fetch('/api/todos', {
+      method: 'POST',
       body: JSON.stringify({ text: todoText }),
     }),
-});
+})
 
-const todoText = ref("");
+const todoText = ref('')
 </script>
 
 <template>
   <form @submit.prevent="createTodo(todoText)">
-    <input v-model="todoText" />
-    <button :disabled="asyncStatus === 'loading'">Add todo</button>
+    <input v-model="todoText">
+    <button :disabled="asyncStatus === 'loading'">
+      Add todo
+    </button>
   </form>
 </template>
 ```
@@ -668,8 +666,8 @@ const todoText = ref("");
 -->
 
 ---
-
-## layout: center
+layout: center
+---
 
 ## Mutations
 
@@ -734,8 +732,8 @@ const {
 -->
 
 ---
-
-## layout: center
+layout: center
+---
 
 ## Predict the future
 
@@ -753,8 +751,8 @@ const {
 -->
 
 ---
-
-## layout: center
+layout: center
+---
 
 # 🪄 [todos.nuxt.dev](https://todos.nuxt.dev/optimistic-todos){.font-mono}
 
@@ -763,87 +761,88 @@ const {
 -->
 
 ---
-
-## layout: center
+layout: center
+---
 
 ```ts {*|2-12|14|16|17-31|33|35,38|39-47|50-53|55-75|59-62}{maxHeight:'410px'}
 const { mutate: addTodo } = useMutation({
   mutation: (title: string) => {
-    if (!title.trim()) throw new Error("Title is required");
+    if (!title.trim()) throw new Error('Title is required')
 
-    return $fetch("/api/todos", {
-      method: "POST",
+    return $fetch('/api/todos', {
+      method: 'POST',
       body: {
         title,
         completed: 0,
       },
-    });
+    })
   },
 
   onMutate(title) {
     // let the user enter new todos right away!
-    newTodo.value = "";
-    const oldTodos = queryCache.getQueryData<Todo[]>(["todos"]) || [];
+    newTodo.value = ''
+    const oldTodos = queryCache.getQueryData<Todo[]>(['todos']) || []
     const newTodoItem = {
       title,
       completed: 0,
       // a negative id to differentiate them from the server ones
       id: -Date.now(),
       createdAt: new Date(),
-      userId: user.value!.id,
-    } satisfies Todo;
+      userId: user.value!.id
+    } satisfies Todo
     // we use newTodos to check for the cache consistency
-    const newTodos = [...oldTodos, newTodoItem];
-    queryCache.setQueryData(["todos"], newTodos);
+    const newTodos = [
+      ...oldTodos,
+      newTodoItem
+    ]
+    queryCache.setQueryData(['todos'], newTodos)
 
-    queryCache.cancelQueries({ key: ["todos"], exact: true });
+    queryCache.cancelQueries({ key: ['todos'], exact: true })
 
-    return { oldTodos, newTodos, newTodoItem };
+    return { oldTodos, newTodos, newTodoItem }
   },
 
   onSuccess(todo, _, { newTodoItem }) {
     // update the todo with the information from the server
     // since we are invalidating queries, this allows us to progressively
     // update the todo list even if the user is adding a lot very quickly
-    const todoList = queryCache.getQueryData<Todo[]>(["todos"]) || [];
-    const todoIndex = todoList.findIndex((t) => t.id === newTodoItem.id);
+    const todoList = queryCache.getQueryData<Todo[]>(['todos']) || []
+    const todoIndex = todoList.findIndex(t => t.id === newTodoItem.id)
     if (todoIndex >= 0) {
-      queryCache.setQueryData(
-        ["todos"],
-        todoList.toSpliced(todoIndex, 1, todo),
-      );
+      queryCache.setQueryData(['todos'], todoList.toSpliced(todoIndex, 1, todo))
     }
-    toast.add({ title: `Todo "${todo.title}" created.` });
+    toast.add({ title: `Todo "${todo.title}" created.` })
   },
 
   onSettled() {
     // always refetch the todos after a mutation
-    queryCache.invalidateQueries({ key: ["todos"] });
+    queryCache.invalidateQueries({ key: ['todos'] })
   },
 
   onError(err, _title, { oldTodos, newTodos }) {
     // oldTodos can be undefined if onMutate errors
     // we also want to check if the oldTodos are still in the cache
     // because the cache could have been updated by another query
-    if (newTodos != null && newTodos === queryCache.getQueryData(["todos"])) {
-      queryCache.setQueryData(["todos"], oldTodos);
+    if (newTodos != null && newTodos === queryCache.getQueryData(['todos'])) {
+      queryCache.setQueryData(['todos'], oldTodos)
     }
 
     if (isNuxtZodError(err)) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const title = (err as any).data.data.issues
         .map((issue: { message: string }) => issue.message)
-        .join("\n");
-      toast.add({ title, color: "red" });
-    } else {
-      console.error(err);
-      toast.add({ title: "Unexpected Error", color: "red" });
+        .join('\n')
+      toast.add({ title, color: 'red' })
     }
-  },
-});
+    else {
+      console.error(err)
+      toast.add({ title: 'Unexpected Error', color: 'red' })
+    }
+  }
+})
 ```
 
-<!--
+<!-- 
 - that was a lot of code! Can we make it less?
 - yes, with conventions in a project
 - I wouldn't recommend it too much because it's great to have a code that can be read and adapted
@@ -852,8 +851,8 @@ const { mutate: addTodo } = useMutation({
 -->
 
 ---
-
-## layout: center
+layout: center
+---
 
 # Query Cache
 
@@ -865,67 +864,65 @@ Actions acts as events that you can interact with. Fetching, invalidating, cance
 -->
 
 ```ts {*|3|4|7-9|13|45-54}{maxHeight:'410px'}
-export function PiniaColadaDelay(
-  options?: PiniaColadaDelayOptions,
-): PiniaColadaPlugin {
+export function PiniaColadaDelay(options?: PiniaColadaDelayOptions): PiniaColadaPlugin {
   return ({ queryCache, scope }) => {
     queryCache.$onAction(({ name, after }) => {
-      if (name === "create") {
+      if (name === 'create') {
         after((entry) => {
-          const delay = entry.options?.delay ?? options?.delay ?? 200;
+          const delay = entry.options?.delay ?? options?.delay ?? 200
           scope.run(() => {
-            const isDelaying = shallowRef(false);
-            entry.ext.isDelaying = isDelaying;
-            if (!delay) return;
+            const isDelaying = shallowRef(false)
+            entry.ext.isDelaying = isDelaying
+            if (!delay) return
 
-            const initialValue = entry.asyncStatus.value;
+            const initialValue = entry.asyncStatus.value
             entry.asyncStatus = customRef<AsyncStatus>((track, trigger) => {
-              let value = initialValue;
-              let timeout: ReturnType<typeof setTimeout> | undefined;
+              let value = initialValue
+              let timeout: ReturnType<typeof setTimeout> | undefined
               return {
                 get() {
-                  track();
-                  return value;
+                  track()
+                  return value
                 },
                 set(newValue) {
-                  clearTimeout(timeout);
-                  if (newValue === "loading") {
-                    isDelaying.value = true;
+                  clearTimeout(timeout)
+                  if (newValue === 'loading') {
+                    isDelaying.value = true
                     timeout = setTimeout(() => {
-                      isDelaying.value = false;
-                      value = newValue;
-                      trigger();
-                    }, delay);
+                      isDelaying.value = false
+                      value = newValue
+                      trigger()
+                    }, delay)
                   } else {
-                    isDelaying.value = false;
-                    value = newValue;
-                    trigger();
+                    isDelaying.value = false
+                    value = newValue
+                    trigger()
                   }
                 },
-              };
-            });
-          });
-        });
+              }
+            })
+          })
+        })
       }
-    });
-  };
+    })
+  }
 }
 
 interface PiniaColadaDelayOptions {
-  delay?: number | false;
+  delay?: number | false
 }
 
-declare module "@pinia/colada" {
+declare module '@pinia/colada' {
   interface UseQueryOptions<TResult, TError> extends PiniaColadaDelayOptions {}
   interface UseQueryEntryExtensions<TResult, TError> {
-    isDelaying: ShallowRef<boolean>;
+    isDelaying: ShallowRef<boolean>
   }
 }
 ```
 
 ---
-
-## layout: center
+layout: center
+---
 
 ## Pinia Colada
 
@@ -936,7 +933,7 @@ declare module "@pinia/colada" {
 
 <v-clicks>
 
-- Get creative! 👨‍💻
+  - Get creative! 👨‍💻
 
 </v-clicks>
 
@@ -948,7 +945,8 @@ declare module "@pinia/colada" {
 -->
 
 ---
-
-## layout: end
+layout: end
+---
 
 # Thanks
+
