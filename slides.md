@@ -59,7 +59,7 @@ layout: cover
 
 # Pinia Colada
 
-![pinia-colada](./public/pinia-colada.png){.h-64.mx-auto}
+![pinia-colada](/pinia-colada.png){.h-64.mx-auto}
 
 ## A Cocktail of
 
@@ -174,7 +174,7 @@ layout: full
 ---
 
 <div class="w-full h-full">
-<video ref="video" src="./public/site-navigation.mp4" class="max-w-full max-h-full mx-auto" autoplay muted></video>
+<video ref="video" src="/site-navigation.mp4" class="max-w-full max-h-full mx-auto" autoplay muted></video>
 </div>
 
 <script setup>
@@ -210,7 +210,7 @@ layout: full
 ---
 
 <div class="w-full h-full">
-<video ref="video" src="./public/link-navigation.mp4" class="max-w-full max-h-full mx-auto" autoplay muted></video>
+<video ref="video" src="/link-navigation.mp4" class="max-w-full max-h-full mx-auto" autoplay muted></video>
 </div>
 
 <script setup>
@@ -937,7 +937,7 @@ layout: center
 
 </v-clicks>
 
-![pinia-colada](./public/pinia-colada.png){.h-64.mx-auto}
+![pinia-colada](/pinia-colada.png){.h-64.mx-auto}
 
 <!--
 - No silver bullet
