@@ -121,7 +121,20 @@ _Hippocrates - Greece 500 BC_
 -->
 
 ---
-layout: quote
+
+## Human centered design
+
+```mermaid
+timeline
+    -4000 Ancient China : 風水
+    -500  Greece (Hippocrates) : Workspace Ergonomics
+    1955  USA (Henry Dreyfuss) : Cognitive Sciences
+    1993  USA (Don Norman) : User Experience
+```
+
+---
+layout: quote-bg
+src: /henry-dreyfuss-bg.jpg
 ---
 
 ### "If the point of contact between the product and people becomes a point of friction, then the designer has failed. If, on the other hand, people are made safer, more comfortable, more desirous of purchase, more efficient—or just plain happier—by contact with the product, then the designer has succeeded."
@@ -289,6 +302,8 @@ image: '/skeleton-ui.png'
 - so widely used, that some app used it wrong
 - yet so similar for the brain
 - if the placeholder stays up a bit too long: is the app broken?
+
+Something I do myself: if skeleton stays too long, I freak out and my developer instincts go off: I open the devtools and search for red
 -->
 
 ---
@@ -333,10 +348,10 @@ layout: center
 
 ## Pinia Colada
 
-A layer on top of <logos-pinia></logos-pinia>!
+Vue plugin built on top of <logos-pinia></logos-pinia>!
 
 - A query cache via `useQueryCache()` (a <logos-pinia/> store)
-- Queries with `useQuery()` and `defineQuery()`
+- Queries with `useQuery()`, `defineQueryOptions`, and `defineQuery()`
 - Mutations with `useMutation()` and `defineMutation()`
 - Light but extensible API
 
@@ -583,7 +598,7 @@ layout: center
 
 - **<=100ms**{.font-mono} : same as instant
 - **<=1s**{.font-mono} : user stays in flow of thought
-- **<=10s**{.font-mono} : context switch
+- **>=10s**{.font-mono} : context switch
 
 ###### [Jacob Nielsen - 1993](https://www.nngroup.com/articles/response-times-3-important-limits/)
 
@@ -620,6 +635,50 @@ useQuery({
 - Plugins later
 - Plays with the perception of speed
 -->
+
+---
+layout: full
+---
+
+<div class="w-full h-full">
+<video ref="video" src="/demo-no-delay.mp4" class="max-w-full max-h-full mx-auto" autoplay muted></video>
+</div>
+
+<script setup>
+import { onSlideEnter } from '@slidev/client'
+import { useTemplateRef } from 'vue'
+
+const video = useTemplateRef('video')
+onSlideEnter(() => {
+  if (!video.value) {
+    return
+  }
+  video.value.currentTime = 0
+  video.value.play()
+})
+</script>
+
+---
+layout: full
+---
+
+<div class="w-full h-full">
+<video ref="video" src="/demo-delay.mp4" class="max-w-full max-h-full mx-auto" autoplay muted></video>
+</div>
+
+<script setup>
+import { onSlideEnter } from '@slidev/client'
+import { useTemplateRef } from 'vue'
+
+const video = useTemplateRef('video')
+onSlideEnter(() => {
+  if (!video.value) {
+    return
+  }
+  video.value.currentTime = 0
+  video.value.play()
+})
+</script>
 
 ---
 layout: center
@@ -933,7 +992,7 @@ layout: center
 
 <v-clicks>
 
-  - Get creative! 👨‍💻
+- Get creative! 👨‍💻
 
 </v-clicks>
 
@@ -949,4 +1008,3 @@ layout: end
 ---
 
 # Thanks
-
