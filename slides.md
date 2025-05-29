@@ -103,7 +103,8 @@ _4000 BC Ancient China_
 -->
 
 ---
-layout: quote
+layout: cover
+background: '/hippocrates.jpeg'
 ---
 
 ### "\[Tools\] must be positioned in such a way as to not obstruct the surgeon, and also be within easy reach when required. They must be close to the surgeon’s operating hand."
@@ -121,20 +122,8 @@ _Hippocrates - Greece 500 BC_
 -->
 
 ---
-
-## Human centered design
-
-```mermaid
-timeline
-    -4000 Ancient China : 風水
-    -500  Greece (Hippocrates) : Workspace Ergonomics
-    1955  USA (Henry Dreyfuss) : Cognitive Sciences
-    1993  USA (Don Norman) : User Experience
-```
-
----
-layout: quote-bg
-src: /henry-dreyfuss-bg.jpg
+layout: cover
+background: '/henry-dreyfuss-bg.jpg'
 ---
 
 ### "If the point of contact between the product and people becomes a point of friction, then the designer has failed. If, on the other hand, people are made safer, more comfortable, more desirous of purchase, more efficient—or just plain happier—by contact with the product, then the designer has succeeded."
@@ -153,7 +142,8 @@ _Henry Dreyfuss - 1955_
 -->
 
 ---
-layout: quote
+layout: cover
+background: '/donald-norman.jpg'
 ---
 
 ### "I thought Human Interface and usability were too narrow: I wanted to cover all aspects of the person’s experience with a system, including industrial design, graphics, the interface, the physical interaction, and the manual"
@@ -573,9 +563,11 @@ useQuery({
 - stale data: is not up to date and should be prefetched
 - noticed query has no argument
 - automatically triggers a refetch if the data is stale
-  - on focus
+  - on foc
   - mount component with useQuery
-- how is this better? tell store
+- let the cache refetch for you
+- hint it about outdated data
+- reduce wait times a bit but do more
 -->
 
 ---
