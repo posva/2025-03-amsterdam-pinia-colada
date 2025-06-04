@@ -107,7 +107,7 @@ layout: cover
 background: '/hippocrates.jpeg'
 ---
 
-### "\[Tools\] must be positioned in such a way as to not obstruct the surgeon, and also be within easy reach when required. They must be close to the surgeon’s operating hand."
+### "\[Tools\] must be positioned in such a way as to not obstruct the surgeon, and also be within easy reach when required. They must be close to the surgeon’s operating hand." {.text-white.bg-black/50.p-2.rounded-xl}
 
 _Hippocrates - Greece 500 BC_
 
@@ -126,7 +126,7 @@ layout: cover
 background: '/henry-dreyfuss-bg.jpg'
 ---
 
-### "If the point of contact between the product and people becomes a point of friction, then the designer has failed. If, on the other hand, people are made safer, more comfortable, more desirous of purchase, more efficient—or just plain happier—by contact with the product, then the designer has succeeded."
+### "If the point of contact between the product and people becomes a point of friction, then the designer has failed. If, on the other hand, people are made safer, more comfortable, more desirous of purchase, more efficient—or just plain happier—by contact with the product, then the designer has succeeded." {.text-white.bg-black/50.p-2.rounded-xl}
 
 _Henry Dreyfuss - 1955_
 
@@ -146,7 +146,7 @@ layout: cover
 background: '/donald-norman.jpg'
 ---
 
-### "I thought Human Interface and usability were too narrow: I wanted to cover all aspects of the person’s experience with a system, including industrial design, graphics, the interface, the physical interaction, and the manual"
+### "I thought Human Interface and usability were too narrow: I wanted to cover all aspects of the person’s experience with a system, including industrial design, graphics, the interface, the physical interaction, and the manual" {.text-white.bg-black/50.p-2.rounded-xl}
 
 _Don Norman (1993)_
 
@@ -633,7 +633,7 @@ layout: full
 ---
 
 <div class="w-full h-full">
-<video ref="video" src="/demo-no-delay.mp4" class="max-w-full max-h-full mx-auto" autoplay muted></video>
+<video ref="video" src="/demo-delay.mp4" class="max-w-full max-h-full mx-auto" autoplay muted></video>
 </div>
 
 <script setup>
@@ -655,7 +655,7 @@ layout: full
 ---
 
 <div class="w-full h-full">
-<video ref="video" src="/demo-delay.mp4" class="max-w-full max-h-full mx-auto" autoplay muted></video>
+<video ref="video" src="/demo-no-delay.mp4" class="max-w-full max-h-full mx-auto" autoplay muted></video>
 </div>
 
 <script setup>
