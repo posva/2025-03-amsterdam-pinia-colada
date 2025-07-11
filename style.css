@@ -1,6 +1,9 @@
-@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css);
+@import url("https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css");
 
-html, body, #app, #page-root {
-  font-family: 'NanumSquare', 'Open Sans', sans-serif;
+html,
+body,
+#app,
+#page-root {
+  /* font-family: "NanumSquare", "Noto Sans SC", "Open Sans", sans-serif; */
   -webkit-font-smoothing: antialiased;
 }
