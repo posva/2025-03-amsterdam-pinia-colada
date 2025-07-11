@@ -29,7 +29,7 @@ htmlAttrs:
 
 <div class="flex flex-col items-start h-full pt-16" >
 
-<img class="w-32 h-32 mb-4 rounded-full" src="/posva.jpeg" alt="eduardo avatar">
+<img class="w-32 h-32 mb-4 rounded-full" src="/avatar.svg" alt="eduardo avatar">
 
 <div class="text-left">
 
@@ -329,6 +329,11 @@ layout: center
 </v-clicks>
 
 <!--
+Reduce the wait time
+- [click] make async operations faster
+- [click] Start them sooner
+- [click] Make them feel faster
+
 - to keep in flow
 - that's the gist of it
 - I'm going to show you some tricks
@@ -519,6 +524,8 @@ const {
 ```
 
 <!--
+Centralized data
+
 - by linking things though key
 - access to the cache entries
 - client cache not about replacing the server cache
@@ -540,6 +547,8 @@ const queryCache = useQueryCache()
 ```
 
 <!--
+The query cache
+
 - it's a client side cache
 - why if on server
   - not about doing less requests
@@ -561,6 +570,8 @@ useQuery({
 ```
 
 <!--
+Fresh data
+
 - concept of fresh vs stale data (like in cache)
 - fresh data: is up to date
 - stale data: is not up to date and should be prefetched
@@ -598,6 +609,8 @@ layout: center
 ###### [Jacob Nielsen - 1993](https://www.nngroup.com/articles/response-times-3-important-limits/)
 
 <!--
+3 important limits for response times, based on Jacob Nielsen research in 1993
+
 - 0.1s: is about the limit for having the user feel that the system is reacting instantaneously, meaning that no special feedback is necessary except to display the result.
 - 1s is about the limit for the user's flow of thought to stay uninterrupted, even though the user will notice the delay. Normally, no special feedback is necessary during delays of more than 0.1 but less than 1.0 second, but the user does lose the feeling of operating directly on the data.
 - 10s is about the limit for keeping the user's attention focused on the dialogue. For longer delays, users will want to perform other tasks while waiting for the computer to finish, so they should be given feedback indicating when the computer expects to be done. Feedback during the delay is especially important if the response time is likely to be highly variable, since users will then not know what to expect.
@@ -608,7 +621,7 @@ layout: center
 layout: center
 ---
 
-## spinner
+## 稍稍延迟 spinner
 
 ```ts{4-6|8-12}
 import { PiniaColada } from '@pinia/colada'
@@ -636,7 +649,7 @@ layout: full
 ---
 
 <div class="w-full h-full">
-<video ref="video" src="/demo-delay.mp4" class="max-w-full max-h-full mx-auto" autoplay muted></video>
+<video ref="video" src="/demo-no-delay.mp4" class="max-w-full max-h-full mx-auto" autoplay muted></video>
 </div>
 
 <script setup>
@@ -658,7 +671,7 @@ layout: full
 ---
 
 <div class="w-full h-full">
-<video ref="video" src="/demo-no-delay.mp4" class="max-w-full max-h-full mx-auto" autoplay muted></video>
+<video ref="video" src="/demo-delay.mp4" class="max-w-full max-h-full mx-auto" autoplay muted></video>
 </div>
 
 <script setup>
@@ -711,6 +724,8 @@ const todoText = ref('')
 ```
 
 <!--
+Mutations
+
 - another way of playing with perception of speed
 - mutate fn only required
 - gives access to the state, exactly like a query
@@ -771,6 +786,8 @@ const {
 ```
 
 <!--
+Mutations
+
 - while queries are more common, mutations is where there is  more risk to create friction
 - more likely errors
 - a place full of opportunities
@@ -801,6 +818,7 @@ layout: center
 <!--
 - in a way, we try to predict
 - the surgeon has people around that know the process and can provide the tools before they are needed
+- Prefetch
 - Optimistic updates: when mutating server state, we can update the client state before the server responds
 -->
 
@@ -974,6 +992,12 @@ declare module '@pinia/colada' {
 }
 ```
 
+<!--
+Query Cache
+
+Plugin API
+-->
+
 ---
 layout: center
 ---
@@ -994,9 +1018,24 @@ layout: center
 ![pinia-colada](/pinia-colada.png){.h-64.mx-auto}
 
 <!--
-- No silver bullet
+Summary
+
+- No silver bullet but
+- Avoid showing loading state too quickly
+- Centralized state for consistent data
+- Invalidate queries asap
+- Use optimistic updates
+- [click] Get creative
 - perception of speed goes beyond pinia: page transitions for long requests
+- Loading in games, LOD, mirrors in elevators, waiting areas. All about distracting you and changing the perception of time
 -->
+
+---
+layout: iframe
+url: https://rulekit.dev
+---
+
+<!-- RuleKit -->
 
 ---
 layout: end
