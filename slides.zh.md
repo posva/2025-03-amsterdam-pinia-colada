@@ -23,7 +23,6 @@ drawings:
 # enable MDC Syntax: https://sli.dev/features/mdc
 mdc: true
 htmlAttrs:
-  dir: ltr
   lang: zh
 ---
 
@@ -46,6 +45,8 @@ htmlAttrs:
 </div>
 
 <!--
+去年我只用中文做了介绍
+
 Hello everyone! I'm Eduardo, or posva on GitHub and Twitter.
 
 I'm the author of pinia, Vue Router, and other vue-related libraries like VueFire.
@@ -75,6 +76,16 @@ layout: cover
 - how to use it to improve your UX
 - before I wanna talk history of UX
 - a few years back
+
+用过 Pinia Colada 的，请
+<ruby>
+  举<rp>(</rp><rt>jǔ</rt><rp>)</rp>手<rp>(</rp><rt>shǒu</rt><rp>)</rp>
+</ruby>
+
+<ruby>
+  接<rp>(</rp><rt>jiē</rt><rp>)</rp>
+</ruby>
+下来我用英文说
 -->
 
 ---
@@ -553,6 +564,7 @@ The query cache
 - why if on server
   - not about doing less requests
   - actually about doing more requests but at the appropriate time
+- How does this work? Why making more requests?
 -->
 
 ---
@@ -1031,9 +1043,26 @@ Summary
 -->
 
 ---
-layout: iframe
-url: https://rulekit.dev
+layout: image
+backgroundSize: contain
+image: '/rulekit.png'
 ---
+
+<div class="h-full w-full flex items-center justify-center">
+<div class="bg-black/50 p-2 rounded-xl text-white text-center min-w-30vw min-h-50vh">
+
+# RuleKit{.font-mono}
+
+![qrcode](/rulekit-qrcode.png){.max-h-300px.mx-auto}
+
+### VUECONF = 20% Off
+
+[🔗 https://rulekit.dev](https://rulekit.dev)
+
+</div>
+</div>
+
+
 
 <!-- RuleKit -->
 
