@@ -12,5 +12,8 @@
     "@posva/slidev-theme": "^1.0.1",
     "@slidev/cli": "^51.8.2",
     "vue": "^3.5.17"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.54.1"
   }
 }
